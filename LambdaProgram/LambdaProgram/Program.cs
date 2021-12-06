@@ -13,8 +13,11 @@ namespace PersonDataManagement
             List<Person> listPersonInCity = new List<Person>();
             AddRecords(listPersonInCity);
 
-           
-            Check_specific_name_present_absent(listPersonInCity);
+            //RetreivingTopTwoRecords_ForAgeIs_LessThanSixty(listPersonInCity);
+            //Retrieve_Record_Age_bet_Thirteen_to_Eighteen(listPersonInCity);
+            //Retrieve_Average_Age(listPersonInCity);
+            //Check_spaecific_name_present_absent(listPersonInCity);
+            Skip_record_age_less_than_60(listPersonInCity);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -46,7 +49,7 @@ namespace PersonDataManagement
             var avg_age = listPersonInCity.Average(s => s.Age);
             Console.WriteLine("Average Age in list : " + avg_age);
         }
-        public static void Check_specific_name_present_absent(List<Person> listPersonInCity)
+        public static void Check_spaecific_name_present_absent(List<Person> listPersonInCity)
         {
             Console.WriteLine("Enter name of person you want to check");
             string inputname = Console.ReadLine();
@@ -57,6 +60,13 @@ namespace PersonDataManagement
             else
             {
                 Console.WriteLine(" A person not exists in our list");
+            }
+        }
+        public static void Skip_record_age_less_than_60(List<Person> listPersonInCity)
+        {
+            foreach (Person pers in listPersonInCity.SkipWhile(e => e.Age < 60))
+            {
+                Console.WriteLine("Name : " + pers.Name + " \t\tAge: " + pers.Age);
             }
         }
     }
